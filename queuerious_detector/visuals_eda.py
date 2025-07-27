@@ -1,7 +1,7 @@
 """Visualization and EDA functions for the queuerious_detector project."""
 
-import math
 from typing import Optional, List
+import math
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -139,7 +139,7 @@ def plot_text_length_by_queue(
             fontsize=9,
             verticalalignment="top",
             horizontalalignment="right",
-            bbox={"facecolor": "white", "alpha": 0.8, "edgecolor": "black"},
+            bbox=dict(facecolor="white", alpha=0.8, edgecolor="black"),
         )
 
     # Hide any unused subplots
@@ -200,12 +200,12 @@ def top_keywords_per_queue(
             raise ValueError("method must be 'tfidf' or 'count'")
 
         try:
-            x = vectorizer.fit_transform(texts)
+            X = vectorizer.fit_transform(texts)
         except ValueError:
             # skip this queue if no valid vocab
             continue
 
-        scores = x.toarray().mean(axis=0)
+        scores = X.toarray().mean(axis=0)
         vocab = vectorizer.get_feature_names_out()
         top = sorted(zip(vocab, scores), key=lambda x: -x[1])[:top_n]
 
@@ -216,7 +216,7 @@ def top_keywords_per_queue(
 
     if visualize and compare_queues and not keyword_df.empty:
         n = len(queues_to_analyze)
-        axes = plt.subplots(1, n, figsize=(6 * n, 5), sharey=False)
+        fig, axes = plt.subplots(1, n, figsize=(6 * n, 5), sharey=False)
         if n == 1:
             axes = [axes]
 
@@ -245,4 +245,4 @@ def top_keywords_per_queue(
 
         plt.tight_layout()
         plt.show()
-        return keyword_df
+    return keyword_df
