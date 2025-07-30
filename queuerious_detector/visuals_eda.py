@@ -28,21 +28,21 @@ def plot_distribution_with_table(
     - title (str): Plot title (optional). If None, a default title is used.
     """
 
-    # Compute counts and percentages
+    # compute counts and percentages
     y_counts = df[y].value_counts()
     y_percent = df[y].value_counts(normalize=True) * 100
 
     plt.figure(figsize=(12, 6))
     ax = sns.countplot(data=df, y=y, order=y_counts.index)
 
-    # Label each bar with count and percentage
+    # label each bar with count and percentage
     for i, patch in enumerate(ax.patches):
         count = int(patch.get_width())
         category = y_counts.index[i]
         percent = y_percent[category]
         label = f"{count}\n({percent:.1f}%)"
         ax.text(
-            patch.get_width() + 50,  # position a bit right of the bar
+            patch.get_width() + 50,
             patch.get_y() + patch.get_height() / 2,
             label,
             va="center",
@@ -123,13 +123,13 @@ def plot_text_length_by_queue(
         axes[idx].set_ylabel("Frequency")
         axes[idx].tick_params(labelbottom=True)
 
-        # Compute stats
+        # compute stats
         mean_len = lengths.mean()
         median_len = lengths.median()
         min_len = lengths.min()
         max_len = lengths.max()
 
-        # Annotate in upper-right
+        # annotate in upper-right
         stats_text = f"Mean: {mean_len:.1f}\nMedian: {median_len}\nMin: {min_len}\nMax: {max_len}"
         axes[idx].text(
             0.95,
@@ -142,7 +142,7 @@ def plot_text_length_by_queue(
             bbox=dict(facecolor="white", alpha=0.8, edgecolor="black"),
         )
 
-    # Hide any unused subplots
+    # hide any unused subplots
     for j in range(len(queues), len(axes)):
         fig.delaxes(axes[j])
 
@@ -177,7 +177,7 @@ def top_keywords_per_queue(
     Returns:
         pd.DataFrame: DataFrame with top keywords and scores per queue.
     """
-    # Build final stopword list
+    # build final stopword list
     stopwords_set = set(ENGLISH_STOP_WORDS)
     if extra_stopwords:
         stopwords_set |= set(extra_stopwords)
