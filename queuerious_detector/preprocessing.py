@@ -1,10 +1,14 @@
 """
-preprosses functions for queuerious_detector
+preprocess functions for queuerious_detector
 """
 
 from typing import List, Dict, Any
 import pandas as pd
 from langdetect import detect
+import spacy
+import re
+
+nlp_en = spacy.load("en_core_web_lg")
 
 
 def preprocess_tickets(
@@ -61,3 +65,52 @@ def preprocess_tickets(
         df = df[available_cols]
 
     return df
+
+
+def redact_pii(text: Any) -> str:
+    """
+    Redact PII from text using regex and Named Entity Recognition (NER).
+
+    Regex:
+      - Emails
+      - Phone numbers
+      - IP addresses
+      - Credit card numbers
+      - Street-style addresses
+
+    NER:
+      - PERSON (names)
+
+    Args:
+        text (Any): Input text to redact.
+        lang (str): Language code ('en' or 'de') for appropriate NER model.
+
+    Returns:
+        str: Text with PII replaced by placeholders.
+    """
+    if not isinstance(text, str):
+        return ""
+
+    redacted = text
+
+    # regex patterns for personal identifiable information (PII)
+    patterns = {
+        "email": r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+",
+        "phone": (
+            r"\b(\+?\d{1,3}[-.\s]?)?(\(?\d{3}\)?|\d{3})" r"[-.\s]?\d{3}[-.\s]?\d{4}\b"
+        ),
+        "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+        "credit_card": r"\b(?:\d[ -]*?){13,16}\b",
+        "address": r"\b\d{1,5}\s+\w+(?:\s\w+)?\s+(St|Street|Ave|Avenue|Rd|Road|Blvd|Boulevard|Dr|Drive|Ln|Lane)\b",
+    }
+    # apply regex patterns to redact PII
+    for key, pattern in patterns.items():
+        redacted = re.sub(pattern, f"[{key.upper()}_REDACTED]", redacted)
+
+    # NER-based redaction
+    doc = nlp_en(redacted)
+    for ent in doc.ents:
+        if ent.label_ == "PERSON":
+            redacted = redacted.replace(ent.text, "<NAME>")
+
+    return redacted
