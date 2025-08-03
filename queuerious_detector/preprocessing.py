@@ -114,3 +114,31 @@ def redact_pii(text: Any) -> str:
             redacted = redacted.replace(ent.text, "<NAME>")
 
     return redacted
+
+
+def clean_text(text):
+    """
+    Clean text minimally for transformer-based embeddings.
+
+    Performs minimal cleaning appropriate for transformer models:
+      - Strips leading and trailing whitespace.
+      - Normalizes internal whitespace to a single space.
+      - Removes line breaks.
+      - Optionally removes HTML tags.
+
+    Args:
+        text (Any):The input text to be cleaned.
+
+    Returns
+        str: Cleaned text string .
+    """
+    if not isinstance(text, str):
+        return ""
+    text = text.strip()
+
+    # replace multiple whitespace with single space
+    text = re.sub(r"\s+", " ", text)
+
+    # remove line breaks
+    text = text.replace("\n", " ").replace("\r", " ")
+    return text
