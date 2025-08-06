@@ -46,12 +46,10 @@ def show_nearest_tickets(
     query_embedding = X_query[query_index].reshape(1, -1)
     distances, indices = nn_model.kneighbors(query_embedding)
 
-    print("=" * 60)
-    print("QUERY TICKET\n")
+    print("QUERY TICKET:")
     print(df_query.iloc[query_index][text_col])
-    print("=" * 60)
     print(
-        f"\nTop {top_n} Most Similar Tickets in Reference Set (Sorted from Least to Most Similar):\n"
+        f"Top {top_n} Most Similar Tickets in Reference Set (Sorted from Least to Most Similar):"
     )
 
     # Get the top_n, sorted from least to most similar (largest to smallest distance)
@@ -59,10 +57,8 @@ def show_nearest_tickets(
     topn = sorted(topn, key=lambda x: -x[0])
 
     for i, (dist, idx) in enumerate(topn, 1):
-        print(f"{'-'*40}")
         print(f"Neighbor #{i}")
         print(f"Distance: {dist:.3f}")
         print(f"True Label: {df_ref.iloc[idx][label_col]}")
-        print("Text Preview:\n")
+        print("Text Preview:")
         print(df_ref.iloc[idx][text_col][:preview_len])
-        print(f"{'-'*40}\n")
