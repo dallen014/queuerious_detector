@@ -5,6 +5,7 @@ import numpy as np
 from collections import Counter
 import re
 from typing import List, Dict, Any
+import pandas as pd
 
 
 def show_nearest_tickets(
