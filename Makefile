@@ -94,10 +94,10 @@ pipeline-lg: data features-lg
 .PHONY: pipeline-sbert-all
 pipeline-sbert-all: data features-sbert
 	$(PYTHON_INTERPRETER) -m queuerious_detector.modeling.train --model rf
-	$(PYTHON_INTERPRETER) -m queuerious_detector.modeling.train --model svm
-	$(PYTHON_INTERPRETER) -m queuerious_detector.modeling.train --model xgb
 	$(PYTHON_INTERPRETER) -m queuerious_detector.modeling.predict --model rf
+	$(PYTHON_INTERPRETER) -m queuerious_detector.modeling.train --model svm
 	$(PYTHON_INTERPRETER) -m queuerious_detector.modeling.predict --model svm
+	$(PYTHON_INTERPRETER) -m queuerious_detector.modeling.train --model xgb
 	$(PYTHON_INTERPRETER) -m queuerious_detector.modeling.predict --model xgb
 
 ## Run all models pipeline
