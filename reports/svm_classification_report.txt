@@ -1,0 +1,33 @@
+Validation Classification Report For Standard Vector Classifier:
+                                       precision    recall  f1-score   support
+
+                 Billing and Payments       0.90      0.85      0.88       288
+Customer Service, Returns & Exchanges       0.75      0.73      0.74       582
+                      General Inquiry       0.89      0.39      0.54        41
+                      Human Resources       0.83      0.67      0.74        60
+                      Product Support       0.77      0.70      0.73       547
+                  Sales and Pre-Sales       0.85      0.61      0.71        90
+      Service Outages and Maintenance       0.90      0.71      0.79       120
+               Technical & IT Support       0.79      0.89      0.84      1222
+
+                             accuracy                           0.79      2950
+                            macro avg       0.83      0.69      0.75      2950
+                         weighted avg       0.79      0.79      0.79      2950
+
+
+Test Classification Report Standard Vector Classifier:
+                                       precision    recall  f1-score   support
+
+                 Billing and Payments       0.91      0.88      0.89       288
+Customer Service, Returns & Exchanges       0.74      0.69      0.71       582
+                      General Inquiry       0.83      0.59      0.69        41
+                      Human Resources       0.87      0.67      0.75        60
+                      Product Support       0.77      0.70      0.74       547
+                  Sales and Pre-Sales       0.84      0.74      0.79        90
+      Service Outages and Maintenance       0.96      0.78      0.86       120
+               Technical & IT Support       0.79      0.89      0.84      1222
+
+                             accuracy                           0.80      2950
+                            macro avg       0.84      0.74      0.78      2950
+                         weighted avg       0.80      0.80      0.80      2950
+

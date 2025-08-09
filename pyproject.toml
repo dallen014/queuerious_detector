@@ -7,7 +7,8 @@ name = "queuerious_detector"
 version = "0.0.1"
 description = "Predict support queue based on customer complaint."
 authors = [
-  { name = "Damond Allen" },
+  { name = "Damond Allen"},
+  { name = "Alyna Petrov" }
 ]
 
 readme = "README.md"
@@ -15,7 +16,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     
 ]
-requires-python = "~=3.10.0"
+requires-python = ">=3.10,<3.14"
 
 
 [tool.ruff]

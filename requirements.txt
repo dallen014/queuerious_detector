@@ -12,4 +12,9 @@ ruff
 scikit-learn
 tqdm
 typer
+langdetect
+spacy
+en-core-web-lg @ https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.8.0/en_core_web_lg-3.8.0-py3-none-any.whl
+sentence-transformers>=2.7
+xgboost
 -e .
