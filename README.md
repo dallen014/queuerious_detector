@@ -1,61 +1,81 @@
-# queuerious_detector
+# queuerious_detector: Queue Classification for Customer Support Tickets
+
+This repository contains the code and pipeline for automating the classification of customer support tickets into the correct support queue. The project is part of our SAIDS Capstone work and uses natural language processing (NLP) techniques to improve ticket routing accuracy. 
+
+Team Members: 
+Allen, D.      toobrite@umich.edu
+Petrov, A.     alynap@umich.edu
+Hoang, Y.      yhoang@umich.edu
+
+## Problem, Impact, and Motivation
+Organizations selling digital products or services often process thousands of customer-support tickets daily. Each incoming message needs to be classified and routed to the best-fitting queue, whether it be Billing, Technical Support, Returns, General Inquiry, or another specialized team. 
+
+Our project aims to reduce ticket misrouting by training machine learning models to predict the correct queue based on its text content. We are motivated by the opportunity to improve mean time-to-resolution, reduce inefficient use of company resources, decrease the amount of unnecessary ticket reassignments, and provide scalabilitiy in customer support operations. 
+
+# Data Source
+Our pipeline uses a dataset of support tickets containing, but not limited to these vital features:
+    - Ticket Subject: Text description of the ticket subject.
+    - Ticket Body: Text description of the ticket issue.
+    - Queue Label: The historically assigned queue for ticket resolution.
+
+The dataset is stored in the repository under data/raw/, and can also be found at the following link: https://www.kaggle.com/datasets/tobiasbueck/multilingual-customer-support-tickets/data
+
+# Project Setup
+The study methodology was set up as follows: 
+1. Data Loading + Preprocessing
+    - Concatenate all CSV files in data/raw/
+    - Map similar queues to broader catergories (e.g Technical Support + IT Support → Technical & IT Support)
+    - Redact personally identifiable information (PII).
+    - Clean and normalize text fields.
+    - Deduplicate and split into train, validation, and test set while following    procudures to prevent data leakage.
+2. Feature Engineering
+    - TF-IDF Vectorization
+    - SBERT Sentence Embeddings
+3. Model Training
+    - Logistic Regression (with TF-IDF)
+    - Random Forest (with SBERT)
+    - Support Vector Classifier (with SBERT)
+    - eXtreme Gradient Boosting (with SBERT)
+4. Evaluation
+    - Generate classification reports for each model
+    - Reports are stored under reports/
+
+# Project Report + Poster
+The project report can be found at:
+The project poster can be found at: 
+
+# How to Run the Code
+Clone this repo using:
+```bash
+git clone git clone https://github.com/<INSERT-YOUR-GITHUB-USERNAME>/queuerious_detector.git
+cd queuerious_detector
+```
+
+Install dependencies (only needs to be done once):
+```bash
+pip install -r requirements.txt
+```
+
+Run the full pipeline for all models:
+```bash
+make pipeline-all
+```
+
+OPTIONAL: Run only the TF-IDF + Logistic Regression pipeline:
+```bash
+make pipeline-lg
+```
+
+OPTIONAL: Run only SBERT + all SBERT-based models:
+```bash
+make pipeline-sbert-all
+```
+
+
+## Acknowledgements
+
+This project was structured using the [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org/) template.
 
 <a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
     <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
 </a>
-
-Predict support queue based on customer complaint.
-
-## Project Organization
-
-```
-├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
-├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
-│
-├── docs               <- A default mkdocs project; see www.mkdocs.org for details
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
-│
-├── pyproject.toml     <- Project configuration file with package metadata for 
-│                         queuerious_detector and configuration for tools like black
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-├── setup.cfg          <- Configuration file for flake8
-│
-└── queuerious_detector   <- Source code for use in this project.
-    │
-    ├── __init__.py             <- Makes queuerious_detector a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    └── plots.py                <- Code to create visualizations
-```
-
---------
-
