@@ -51,7 +51,7 @@ def train_svm(train_df):
     X_train_scaled = scaler.fit_transform(X_train)
     dump(scaler, MODELS_DIR / "svm_scaler.joblib")
     # Using the best found parameters (from notebooks)
-    svm = SVC(kernel='poly', gamma=np.float64(0.1), degree=4, C= np.float64(12.915496650148826))
+    svm = SVC(class_weight="balanced", random_state=42, probability=True, kernel='poly', gamma=np.float64(0.1), degree=4, C= np.float64(12.915496650148826))
     svm.fit(X_train_scaled, y_train)
     dump(svm, MODELS_DIR / "svm.joblib", compress=3)
 

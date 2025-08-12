@@ -15,7 +15,9 @@ Our project aims to reduce ticket misrouting by training machine learning models
 # Data Source
 Our pipeline uses a dataset of support tickets containing, but not limited to these vital features:
     - Ticket Subject: Text description of the ticket subject.
+
     - Ticket Body: Text description of the ticket issue.
+
     - Queue Label: The historically assigned queue for ticket resolution.
 
 The dataset is stored in the repository under data/raw/, and can also be found at the following link: https://www.kaggle.com/datasets/tobiasbueck/multilingual-customer-support-tickets/data
@@ -41,13 +43,14 @@ The study methodology was set up as follows:
     - Reports are stored under reports/
 
 # Project Report + Poster
-The project report can be found at:
-The project poster can be found at: 
+The project report can be found at: https://toobrightideas.medium.com/querious-detector-using-ai-to-assist-with-support-queue-ticket-assignment-98c4dbc08e21
+
+The project poster can be found at: https://drive.google.com/file/d/1ocw1dFYbfPDnF-3UuoxvRmwP2QtKVx-n/view?usp=sharing
 
 # How to Run the Code
 Clone this repo using:
 ```bash
-git clone git clone https://github.com/<INSERT-YOUR-GITHUB-USERNAME>/queuerious_detector.git
+git clone https://github.com/dallen014/queuerious_detector.git
 cd queuerious_detector
 ```
 
