@@ -14,6 +14,7 @@ Our project aims to reduce ticket misrouting by training machine learning models
 
 # Data Source
 Our pipeline uses a dataset of support tickets containing, but not limited to these vital features:
+
     - Ticket Subject: Text description of the ticket subject.
 
     - Ticket Body: Text description of the ticket issue.
