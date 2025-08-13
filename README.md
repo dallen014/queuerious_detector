@@ -42,6 +42,12 @@ The study methodology was set up as follows:
 4. Evaluation
     - Generate classification reports for each model
     - Reports are stored under reports/
+# See the SVC Model in Action
+We included a notebook: "3.01-see-SVC-in-action.ipynb" in the notebooks section. This notebook demonstrates how the trained Support Vector Classifier can:
+    - Predict the most likely queue for new, unseen support tickets
+    - Output probabilities for the top three most likely queues
+    - Generate a LIME interpretability plot showing which words pushed the model toward or away from its prediction
+This is especially useful for understanding model behavior in a production-like setting, aiding human reviewers in making informed decisions when using AI-assisted ticket routing.
 
 # Project Report + Poster
 The project report can be found at: [Queuerious Detector Report](https://toobrightideas.medium.com/querious-detector-using-ai-to-assist-with-support-queue-ticket-assignment-98c4dbc08e21)
