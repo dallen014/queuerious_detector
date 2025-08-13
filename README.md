@@ -21,7 +21,7 @@ Our pipeline uses a dataset of support tickets containing, but not limited to th
 
     - Queue Label: The historically assigned queue for ticket resolution.
 
-The dataset is stored in the repository under data/raw/, and can also be found at the following link: https://www.kaggle.com/datasets/tobiasbueck/multilingual-customer-support-tickets/data
+The dataset is stored in the repository under data/raw/, and can also be found at the following link: https://www.kaggle.com/datasets/tobiasbueck/multilingual-customer-support-tickets/data. This data falls under the CC BY 4.0 license. 
 
 # Project Setup
 The study methodology was set up as follows: 
