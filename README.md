@@ -44,7 +44,7 @@ The study methodology was set up as follows:
     - Reports are stored under reports/
 
 # Project Report + Poster
-The project report can be found at: https://toobrightideas.medium.com/querious-detector-using-ai-to-assist-with-support-queue-ticket-assignment-98c4dbc08e21
+The project report can be found at:[Queuerious Detector: Using AI to Assist with Support Queue Ticket Assignment](https://toobrightideas.medium.com/querious-detector-using-ai-to-assist-with-support-queue-ticket-assignment-98c4dbc08e21)
 
 The project poster can be found at: https://drive.google.com/file/d/1ocw1dFYbfPDnF-3UuoxvRmwP2QtKVx-n/view?usp=sharing
 
